@@ -13,7 +13,7 @@ Lista de las distintas tecnologías del sistema:
 * Sistema operativo Ubuntu22.04
 * Flask
 * MySQL
-## Instalación-de-las-tecnologías 
+## Instalación de las tecnologías 
 1. Instalación de python3-pip si se no se tiene instalado 
    ```bash
     sudo apt install python3-pip
