@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask import jsonify
 import psycopg2, psycopg2.extras
 import json
-import Candidato 
+from Candidato import Candidato
 
 app = Flask(__name__)
 
@@ -17,7 +17,7 @@ def home():
 
 def getConnection():
 
-    conn = psycopg2.connect(database="candidatosBBDD", user="admin_candidatos", password="padmin", host="46.183.112.157", port="5432")
+    conn = psycopg2.connect(database="candidatosBBDD", user="admin_candidatos", password="padmin", host="217.71.204.148")
 
     return conn
 
@@ -29,16 +29,32 @@ def obtener_candidato():
     perfil = request.args.get("perfil")
     experiencia = request.args.get("experiencia")
 
+    # Conexión y consultas a la BBDD
     conn = getConnection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM candidatos WHERE perfil=" + perfil + " AND experiencia>=" + experiencia)
+    cursor.execute("SELECT * FROM candidatos WHERE perfil='" + perfil + "' AND experiencia>=" + str(experiencia))
     candidatos_filtrados = cursor.fetchall()
-    # print(candidatos_filtrados)
+
+    lista_candidatos_filtrados = []
+
+    for candidato in candidatos_filtrados:
+        
+        candidato_obj = Candidato(
+        dni = candidato[0],
+        nombre = candidato[1],
+        apellidos = candidato[2],
+        perfil = candidato[3],
+        experiencia = candidato[4],
+        correo = candidato[5],
+        cv = candidato[6])
+    
+        lista_candidatos_filtrados.append(candidato_obj)
+
     ultimo_execute = cursor.rowcount
     cursor.close()
     conn.close()
     if ultimo_execute > 0 : 
-        return json.dumps(candidatos_filtrados, default=str),200
+        return jsonify([candidato.a_diccionario() for candidato in lista_candidatos_filtrados]),200
     else :
         return jsonify({'mensaje': 'No se ha podido obtener candidatos'}),200  
     
