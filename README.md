@@ -4,8 +4,8 @@
 APIRest, para la gestión y mantenimiento de una base de datos de candidatos por parte del personal de recursos humanos. 
 
 ## Tabla de contenidos 
-1.[Tecnologías](#Tecnologías)
-2.[Instalación_de_las_tecnologías](#Instalación_de_las_tecnologías)
+*[Tecnologías](#Tecnologías)
+2.[Instalación de las tecnologías](#Instalación-de-las-tecnologías)
 3.[Comandos_del_servicio](#Comandos_del_servicio)
 
 ## Tecnologías
@@ -13,7 +13,7 @@ Lista de las distintas tecnologías del sistema:
 * Sistema operativo Ubuntu22.04
 * Flask
 * MySQL
-## Instalación_de_las_tecnologías 
+## Instalación-de-las-tecnologías 
 1. Instalación de python3-pip si se no se tiene instalado 
    ```bash
     sudo apt install python3-pip
