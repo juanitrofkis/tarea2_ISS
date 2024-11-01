@@ -6,7 +6,7 @@ APIRest, para la gestión y mantenimiento de una base de datos de candidatos por
 ## Tabla de contenidos 
 -[Tecnologías](#Tecnologías)
 -[Instalación de las tecnologías](#Instalación-de-las-tecnologías)
--[Comandos_del_servicio](#Comandos_del_servicio)
+-[Comandos del servicio](#Comandos_del_servicio)
 
 ## Tecnologías
 Lista de las distintas tecnologías del sistema:
@@ -25,7 +25,7 @@ Lista de las distintas tecnologías del sistema:
     git clone 
     ./install_jackd.sh
 
-## Comandos_del_servicio
+## Comandos del servicio
 A continuación se comentarán los pasos que hay que realizar para arrancar el servicio 
 1. ```bash
     qjackctl
