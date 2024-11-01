@@ -4,9 +4,9 @@
 APIRest, para la gestión y mantenimiento de una base de datos de candidatos por parte del personal de recursos humanos. 
 
 ## Tabla de contenidos 
-*[Tecnologías](#Tecnologías)
-*[Instalación_de_las_tecnologías](#Instalación_de_las_tecnologías)
-*[Comandos_del_servicio](#Comandos_del_servicio)
+-[Tecnologías](#Tecnologías)
+-[Instalación_de_las_tecnologías](#Instalación_de_las_tecnologías)
+-[Comandos_del_servicio](#Comandos_del_servicio)
 
 ## Tecnologías
 Lista de las distintas tecnologías del sistema:
