@@ -6,7 +6,7 @@ APIRest, para la gestión y mantenimiento de una base de datos de candidatos por
 ## Tabla de contenidos 
 -[Tecnologías](#Tecnologías)
 -[Instalación de las tecnologías](#Instalación-de-las-tecnologías)
--[Comandos del servicio](#Comandos_del_servicio)
+-[Comandos del servicio](#Comandos-del-servicio)
 
 ## Tecnologías
 Lista de las distintas tecnologías del sistema:
