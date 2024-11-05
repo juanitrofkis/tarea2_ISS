@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Candidatos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 8px 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gestión de Candidatos</h1>
+
+    <!-- GET -->
+    <form id="getForm">
+        <h2>Obtener Candidato</h2>
+        <label for="get_perfil">Perfil:</label>
+        <input type="text" id="get_perfil" name="get_perfil" required>
+        <label for="get_experiencia">Experiencia:</label>
+        <input type="text" id="get_experiencia" name="get_experiencia" required>
+        <button type="button" onclick="getCandidato()">Obtener</button>
+    </form>
+
+    <!-- POST -->
+    <form id="postForm">
+        <h2>Agregar Candidato</h2>
+        <label for="postDni">DNI:</label>
+        <input type="text" id="postDni" name="dni" required>
+        <label for="postNombre">Nombre:</label>
+        <input type="text" id="postNombre" name="nombre" required>
+        <label for="postApellidos">Apellidos:</label>
+        <input type="text" id="postApellidos" name="apellidos" required>
+        <label for="postPerfil">Perfil:</label>
+        <input type="text" id="postPerfil" name="perfil" required>
+        <label for="postExperiencia">Experiencia:</label>
+        <input type="number" id="postExperiencia" name="experiencia" required>
+        <label for="postCorreo">Correo:</label>
+        <input type="email" id="postCorreo" name="correo" required>
+        <label for="postCv">CV:</label>
+        <input type="text" id="postCv" name="cv" required>
+        <button type="button" onclick="postCandidato()">Agregar</button>
+    </form>
+
+    <!-- PUT -->
+    <form id="putForm">
+        <h2>Actualizar Candidato</h2>
+        <label for="putDni">DNI:</label>
+        <input type="text" id="putDni" name="dni" required>
+        <label for="putNombre">Nombre:</label>
+        <input type="text" id="putNombre" name="nombre">
+        <label for="putApellidos">Apellidos:</label>
+        <input type="text" id="putApellidos" name="apellidos">
+        <label for="putPerfil">Perfil:</label>
+        <input type="text" id="putPerfil" name="perfil">
+        <label for="putExperiencia">Experiencia:</label>
+        <input type="number" id="putExperiencia" name="experiencia">
+        <label for="putCorreo">Correo:</label>
+        <input type="email" id="putCorreo" name="correo">
+        <label for="putCv">CV:</label>
+        <input type="text" id="putCv" name="cv">
+        <button type="button" onclick="putCandidato()">Actualizar</button>
+    </form>
+
+    <!-- DELETE -->
+    <form id="deleteForm">
+        <h2>Borrar Candidato</h2>
+        <label for="deleteDni">DNI:</label>
+        <input type="text" id="deleteDni" name="dni" required>
+        <button type="button" onclick="deleteCandidato()">Borrar</button>
+    </form>
+
+    <script>
+        const apiUrl = 'http://217.71.204.148:8080'; 
+
+        async function getCandidato() {
+            const perfil = document.getElementById('get_perfil').value;
+            const experiencia = document.getElementById('get_experiencia').value;
+            console.log(`URI: ${apiUrl}/datos_candidatos?perfil=${perfil}&experiencia=${experiencia}`);
+            
+            try {
+                const response = await fetch(`${apiUrl}/datos_candidatos?perfil=${perfil}&experiencia=${experiencia}`);
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status} ${response.statusText}`);
+                }
+                
+                const result = await response.json();
+                
+                // Se abre una nueva ventana emergente para mostrar el resultado en una tabla
+                const resultWindow = window.open("", "_blank", "width=800,height=600");
+                resultWindow.document.write(`
+                    <html>
+                    <head>
+                        <title>Resultados</title>
+                        <style>
+                            table { 
+                                width: 100%; 
+                                border-collapse: collapse; 
+                            }
+                            th, td { 
+                                border: 1px solid #ddd; 
+                                padding: 8px; 
+                                text-align: left;
+                            }
+                            th { 
+                                background-color: #4CAF50; 
+                                color: white; 
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <h2>Resultados de Candidatos</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>DNI</th>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                    <th>Perfil</th>
+                                    <th>Experiencia</th>
+                                    <th>Correo</th>
+                                    <th>CV</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                `);
+
+                result.forEach(candidato => {
+                    resultWindow.document.write(`
+                        <tr>
+                            <td>${candidato.dni}</td>
+                            <td>${candidato.nombre}</td>
+                            <td>${candidato.apellidos}</td>
+                            <td>${candidato.perfil}</td>
+                            <td>${candidato.experiencia}</td>
+                            <td>${candidato.correo}</td>
+                            <td>${candidato.cv}</td>
+                        </tr>
+                    `);
+                });
+
+                resultWindow.document.write(`
+                            </tbody>
+                        </table>
+                    </body>
+                    </html>
+                `);
+
+            } catch (error) {
+                console.error("Error en la petición GET:", error);
+                alert(`Error en la petición: ${error.message}`);
+            }
+        }
+
+        async function postCandidato() {
+            const data = {
+                dni: document.getElementById('postDni').value,
+                nombre: document.getElementById('postNombre').value,
+                apellidos: document.getElementById('postApellidos').value,
+                perfil: document.getElementById('postPerfil').value,
+                experiencia: parseInt(document.getElementById('postExperiencia').value),
+                correo: document.getElementById('postCorreo').value,
+                cv: document.getElementById('postCv').value
+            };
+            try {
+                const response = await fetch(`${apiUrl}/nuevo_candidato`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                alert(result.mensaje);
+            } catch (error) {
+                alert(`Error en la petición POST: ${error.message}`);
+            }
+        }
+
+        async function putCandidato() {
+            const dni = document.getElementById('putDni').value;
+            const data = {
+                dni: dni,
+                nombre: document.getElementById('putNombre').value || undefined,
+                apellidos: document.getElementById('putApellidos').value || undefined,
+                perfil: document.getElementById('putPerfil').value || undefined,
+                experiencia: parseInt(document.getElementById('putExperiencia').value) || undefined,
+                correo: document.getElementById('putCorreo').value || undefined,
+                cv: document.getElementById('putCv').value || undefined
+            };
+            try {
+                const response = await fetch(`${apiUrl}/candidato_concreto`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                alert(result.mensaje);
+            } catch (error) {
+                alert(`Error en la petición PUT: ${error.message}`);
+            }
+        }
+
+        async function deleteCandidato() {
+            const dni = document.getElementById('deleteDni').value;
+            try {
+                const response = await fetch(`${apiUrl}/candidato/`, { 
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify( {dni: dni})     
+                });
+                const result = await response.json();
+                alert(result.mensaje);
+            } catch (error) {
+                alert(`Error en la petición DELETE: ${error.message}`);
+            }
+        }
+    </script>
+
+</body>
+</html>
