@@ -57,7 +57,7 @@ def obtener_candidato():
         return jsonify([candidato.a_diccionario() for candidato in lista_candidatos_filtrados]),200
     else :
         return jsonify({'mensaje': 'No se ha podido obtener candidatos'}),200  
-    
+
 @app.route('/nuevo_candidato', methods=['POST'])
 def agregar_candidato():
 
@@ -71,12 +71,19 @@ def agregar_candidato():
         correo = request.json['correo'],
         cv = request.json['cv'])
     
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO candidatos (dni, nombre, apellidos, perfil, experiencia, correo, cv) VALUES (" + nuevo_candidato.dni + "," + nuevo_candidato.nombre + "," + nuevo_candidato.apellidos + "," + nuevo_candidato.perfil + "," + nuevo_candidato.experiencia + "," + nuevo_candidato.correo + "," + nuevo_candidato.cv + ")")
-    
+    cursor = conn.cursor() 
+    cursor.execute("INSERT INTO candidatos (dni, nombre, apellidos, perfil, experiencia, correo, cv) VALUES ('" + nuevo_candidato.dni + "','" + nuevo_candidato.nombre + "','" + nuevo_candidato.apellidos + "','" + nuevo_candidato.perfil + "'," + str(nuevo_candidato.experiencia) + ",'" + nuevo_candidato.correo + "','" + nuevo_candidato.cv + "')")
+    ultimo_execute = cursor.rowcount
+    #cursor.commit()
+    conn.commit()
     cursor.close()
     conn.close()
-    return jsonify({'mensaje': 'Se ha añadido correctamente al candidato a la BBDD'}),200   
+
+    if ultimo_execute > 0 :
+        return jsonify({'mensaje': 'Se ha añadido correctamente al candidato a la BBDD'}),200
+    else : 
+        return jsonify({'mensaje' : 'No se ha añadido correctamente al candidato a la BBDD'})
+
 
         
 
@@ -87,34 +94,36 @@ def actualizar_candidato():
     conn = getConnection()
     cursor = conn.cursor()
    
-    cursor.execute("SELECT dni FROM candidatos WHERE dni = " + request.json['dni'])
-    dni_existente = cursor.fetchall()
+    cursor.execute("SELECT dni FROM candidatos WHERE dni = '" + request.json['dni'] + "'")
+    dni_existente = cursor.fetchall() #Devuelve un array
     # print(dni_existente)
+    
 
     if dni_existente is not None:
-        if request.json['nombre'] is not None:
-            cursor.execute("UPDATE candidatos SET nombre = " + request.json['nombre'] + " WHERE dni = " + dni_existente)
+        if 'nombre' in request.json:
+            cursor.execute("UPDATE candidatos SET nombre = '" + request.json['nombre'] + "' WHERE dni = '" + request.json['dni'] + "'")
 
-        if request.json['apellidos'] is not None:
-            cursor.execute("UPDATE candidatos SET apellidos = " + request.json['apellidos'] + " WHERE dni = " + dni_existente)
+        if 'apellidos' in request.json:
+            cursor.execute("UPDATE candidatos SET apellidos = '" + request.json['apellidos'] + "' WHERE dni = '" + request.json['dni'] + "'")
             
-        if request.json['perfil'] is not None:
-            cursor.execute("UPDATE candidatos SET perfil = " + request.json['perfil'] + " WHERE dni = " + dni_existente)
+        if 'perfil' in request.json:
+            cursor.execute("UPDATE candidatos SET perfil = '" + request.json['perfil'] + "' WHERE dni = '" + request.json['dni'] + "'")
             
-        if request.json['experiencia'] is not None:
-            cursor.execute("UPDATE candidatos SET experiencia = " + request.json['experiencia'] + " WHERE dni = " + dni_existente)
+        if 'experiencia' in request.json:
+            cursor.execute("UPDATE candidatos SET experiencia = '" + request.json['experiencia'] + "' WHERE dni = '" + request.json['dni'] + "'")
             
-        if request.json['correo'] is not None:
-            cursor.execute("UPDATE candidatos SET correo = " + request.json['correo'] + " WHERE dni = " + dni_existente)
+        if 'correo' in request.json:
+            cursor.execute("UPDATE candidatos SET correo = '" + request.json['correo'] + "' WHERE dni = '" + request.json['dni'] + "'")
             
-        if request.json['cv'] is not None:
-            cursor.execute("UPDATE candidatos SET cv = " + request.json['cv'] + " WHERE dni = " + dni_existente)
+        if 'cv' in request.json:
+            cursor.execute("UPDATE candidatos SET cv = '" + request.json['cv'] + "' WHERE dni = '   " + request.json['dni'] + "'")
 
     else:
         cursor.close()
         conn.close()
         return jsonify({'mensaje': 'No se ha encontrado un candidato con ese DNI en la base de datos'}),200
 
+    conn.commit()
     cursor.close()
     conn.close()
     return jsonify({'mensaje': 'Se ha actualizado correctamente la BBDD'}),200 
@@ -124,8 +133,8 @@ def eliminar_candidato():
     dni_eliminar = request.json['dni']
     conn = getConnection()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM candidatos WHERE dni="+ dni_eliminar)
-    cursor.commit()
+    cursor.execute("DELETE FROM candidatos WHERE dni='"+ dni_eliminar + "'")
+    conn.commit()
     ultimo_execute = cursor.rowcount
     cursor.close() 
     conn.close()
