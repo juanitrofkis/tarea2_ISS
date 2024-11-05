@@ -28,7 +28,7 @@ Lista de las distintas tecnologías del sistema:
 ```bash
  sudo apt install curl 
 
-## [Comandos del servicio
+## Comandos del servicio
 A continuación se comentarán los pasos que hay que realizar para arrancar el servicio 
 1. ```bash
     Tener la base de datos en clouding.io para ello hay que pagar una subscripción.
