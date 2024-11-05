@@ -1,0 +1,121 @@
+nohup: ignoring input
+ * Serving Flask app 'servidor'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://217.71.204.148:8080
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 311-847-749
+193.147.160.152 - - [05/Nov/2024 17:03:17] "GET /datos_candidatos?perfil=Contador&experiencia=9 HTTP/1.1" 200 -
+5.89.229.116 - - [05/Nov/2024 17:21:49] "GET / HTTP/1.0" 200 -
+178.139.170.102 - - [05/Nov/2024 17:42:27] code 400, message Bad request version ('Ø\x14')
+178.139.170.102 - - [05/Nov/2024 17:42:27] "\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03ÕY\\\x93þ\x99Â\x1d\x10êU;Ïò\x03Ð\x12Èô»·î?©\x9cp]\x89\x87Ú·D \x05\x8eöæu\x83\x90\x98\x91\x0c4\x89\x11ÿá\x8c\x1d;J"\x1fØ\x14" HTTPStatus.BAD_REQUEST -
+178.139.170.102 - - [05/Nov/2024 17:42:27] code 400, message Bad request syntax ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03¦Û½ê\x1b$XJïÆåb')
+178.139.170.102 - - [05/Nov/2024 17:42:27] "\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03¦Û½ê\x1b$XJïÆåb" HTTPStatus.BAD_REQUEST -
+178.139.170.30 - - [05/Nov/2024 17:42:27] "GET /datos_candidatos?perfil=contador&%20experiencia=9 HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/tarea2_ISS/servidor/servidor.py", line 34, in obtener_candidato
+    cursor.execute("SELECT * FROM candidatos WHERE perfil='" + perfil + "' AND experiencia>=" + str(experiencia))
+psycopg2.errors.UndefinedColumn: column "none" does not exist
+LINE 1: ...ROM candidatos WHERE perfil='contador' AND experiencia>=None
+                                                                   ^
+
+178.139.170.102 - - [05/Nov/2024 17:42:28] "GET /datos_candidatos?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+178.139.170.102 - - [05/Nov/2024 17:42:28] "GET /datos_candidatos?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+178.139.170.102 - - [05/Nov/2024 17:42:28] "GET /datos_candidatos?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+178.139.170.102 - - [05/Nov/2024 17:43:02] "GET /datos_candidatos?perfil=contador&experiencia=9 HTTP/1.1" 200 -
+178.139.170.30 - - [05/Nov/2024 17:43:02] "GET /favicon.ico HTTP/1.1" 404 -
+178.139.170.102 - - [05/Nov/2024 17:43:14] "GET /datos_candidatos?perfil=contador&experiencia=9 HTTP/1.1" 200 -
+178.139.170.30 - - [05/Nov/2024 17:43:27] "GET /datos_candidatos?perfil=contador&experiencia=9 HTTP/1.1" 200 -
+178.139.170.30 - - [05/Nov/2024 17:43:39] "GET /datos_candidatos?perfil=contador&experiencia=9 HTTP/1.1" 200 -
+178.139.170.30 - - [05/Nov/2024 17:43:41] "GET /datos_candidatos?perfil=contador&experiencia=9 HTTP/1.1" 200 -
+178.139.170.30 - - [05/Nov/2024 17:44:03] "GET /datos_candidatos?perfil=contador&experiencia=9 HTTP/1.1" 200 -
+178.139.170.83 - - [05/Nov/2024 17:44:14] "GET /datos_candidatos?perfil=CCContador&experiencia=9 HTTP/1.1" 200 -
+178.139.170.83 - - [05/Nov/2024 17:44:26] "GET /datos_candidatos?perfil=contador&experiencia=9 HTTP/1.1" 200 -
+178.139.170.83 - - [05/Nov/2024 17:44:34] "GET /datos_candidatos?perfil=CContador&experiencia=9 HTTP/1.1" 200 -
+178.139.170.83 - - [05/Nov/2024 17:44:43] "GET /datos_candidatos?perfil=contador&experiencia=9 HTTP/1.1" 200 -
+178.139.170.30 - - [05/Nov/2024 17:45:09] "GET /favicon.ico HTTP/1.1" 404 -
+178.139.170.30 - - [05/Nov/2024 17:45:12] "GET /datos_candidatos?perfil=contador&experiencia=9 HTTP/1.1" 200 -
+178.139.170.83 - - [05/Nov/2024 17:45:48] "GET /favicon.ico HTTP/1.1" 404 -
+178.139.170.83 - - [05/Nov/2024 17:45:55] code 400, message Bad request version ('Ô\x9c(H\x0eh\x9f')
+178.139.170.83 - - [05/Nov/2024 17:45:55] "\x16\x03\x01\x02:\x01\x00\x026\x03\x03¢¡Z×Áã&\x1a\x84\\Nx\x89¢ø\x9fä\x1e\x01aËP\x1ep«Íbah×Ö\x11 ¯÷bôfYõÀÍÁ\x9cl\x92L»iÃMÔË\x15:\x86ÞJPÂ\x1e2`e\x1f\x00 zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01Í**\x00\x00\x00\x17\x00\x00ÿ\x01\x00\x01\x00\x00\x12\x00\x00\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00+\x00\x07\x06\x9a\x9a\x03\x04\x03\x03\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x00\x05\x00\x05\x01\x00\x00\x00\x00þ\x0d\x01\x1a\x00\x00\x01\x00\x01\x7f\x00 Ô\x9c(H\x0eh\x9f" HTTPStatus.BAD_REQUEST -
+178.139.170.83 - - [05/Nov/2024 17:45:55] code 400, message Bad request syntax ("\x16\x03\x01\x02:\x01\x00\x026\x03\x03\x06Ù@Å5ßÂ\x9eÁ}\x9fµ'$Ç\x89èNÔ\x07")
+178.139.170.83 - - [05/Nov/2024 17:45:55] "\x16\x03\x01\x02:\x01\x00\x026\x03\x03\x06Ù@Å5ßÂ\x9eÁ}\x9fµ'$Ç\x89èNÔ\x07" HTTPStatus.BAD_REQUEST -
+178.139.170.83 - - [05/Nov/2024 17:45:58] "GET /datos_candidatos?perfil=Contador&experiencia=9 HTTP/1.1" 200 -
+31.4.197.58 - - [05/Nov/2024 18:06:23] code 400, message Bad request version ('\x02h2\x08http/1.1\x00')
+31.4.197.58 - - [05/Nov/2024 18:06:23] "\x16\x03\x01\x02:\x01\x00\x026\x03\x03$nÙË\x89\x89[\x17_ñ\x99»èUnïbr@Â·\x95\x0d×p\x83*ÿ\x9e­tñ éº§øtÏ>ÿ;\x9f\x1e½\x180\x83sn\x04ZÞ¡\x82\x91¥¦õ0¦usÈG\x00 **\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01ÍJJ\x00\x00\x00\x1b\x00\x03\x02\x00\x02\x00#\x00\x00\x00\x12\x00\x00\x003\x00+\x00)ªª\x00\x01\x00\x00\x1d\x00 É\x90u¤H\x0eëÂùUAÐM\x10¼\x0f¿\x95Bâ*n9u²\x13>k~ºqU\x00+\x00\x07\x06ºº\x03\x04\x03\x03\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x00" HTTPStatus.BAD_REQUEST -
+31.4.197.58 - - [05/Nov/2024 18:06:23] code 400, message Bad request version ('\x00\x02\x01\x00Di\x00\x05\x00\x03\x02h2\x00')
+31.4.197.58 - - [05/Nov/2024 18:06:23] "\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x031oðü\x16/áÎWm\x86m\x83*s\x92\x91ï4,àËw;ûâ\x8dNÄç\x97Î ÔpòÑ\x90ôÖËÒAxa\x85\x01vÜ\x9dk=\x1eLc\x019ªyï\x10?b\x8e3\x00 \x1a\x1a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93êê\x00\x00ÿ\x01\x00\x01\x00\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x003\x00+\x00)zz\x00\x01\x00\x00\x1d\x00 r\x0d*`s\x09\x9bÃö®ÏÎû\x7f\x16\x9d¦÷M\x90\x8c²IÓ¢³bÃ#ÿ*\x1e\x00\x17\x00\x00\x00+\x00\x07\x06ªª\x03\x04\x03\x03þ\x0d\x00º\x00\x00\x01\x00\x01\x8f\x00 \x12W\x15ùF³»Ux\x8bßo"!V¶­\x1b\x9a\x8b»çÉt¨.6Õ÷¶«\x16\x00\x90\x97øA\x02T\x92 øUýES\x8eÜ\x87á\x8bT\x99w\x13ÿÅ»îwW\x13Úð\x1bÇù\x97\x92f\x1dµsè]}7¿ÕºÎÉµD\x13R[õ¤\x08\x8f^\x09ÏàP\x8cüú\x8b\x86<î!ª;Q \x0b\x1c.Üp¼\x89Ã'x6\x11òÝÕ"\x90¾\x98c~¤*üÆ\x9f\x9d;\\ï<\x88îÇ¶»yÄ\x15¦\x19\x0cO3ù¯7\x9b$Z¥ï,\x9egÊò×xÎ¨b¥\x08\x9aQm\x07k\x9c\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00-\x00\x02\x01\x01\x00\x0b\x00\x02\x01\x00Di\x00\x05\x00\x03\x02h2\x00" HTTPStatus.BAD_REQUEST -
+31.4.197.58 - - [05/Nov/2024 18:06:24] "GET /datos_candidatos?perfil=Contador&experiencia=9 HTTP/1.1" 200 -
+31.4.197.58 - - [05/Nov/2024 18:06:24] "GET /favicon.ico HTTP/1.1" 404 -
+61.216.108.97 - - [05/Nov/2024 18:16:37] "GET / HTTP/1.0" 200 -
+185.191.126.248 - - [05/Nov/2024 18:23:05] "GET / HTTP/1.1" 200 -
+114.34.166.158 - - [05/Nov/2024 18:47:41] "GET / HTTP/1.0" 200 -
+87.120.166.244 - - [05/Nov/2024 19:13:32] "CONNECT google.com:443 HTTP/1.1" 404 -
+167.71.46.248 - - [05/Nov/2024 19:21:15] code 400, message Bad request syntax ('\x00\x0e8|\x88\x13E\x18ý¤T\x00\x00\x00\x00\x00')
+167.71.46.248 - - [05/Nov/2024 19:21:15] "\x00\x0e8|\x88\x13E\x18ý¤T\x00\x00\x00\x00\x00" HTTPStatus.BAD_REQUEST -
+176.83.238.22 - - [05/Nov/2024 19:21:27] code 400, message Bad request version ('ºº\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93êê\x00\x00\x00\x17\x00\x00ÿ\x01\x00\x01\x00\x00')
+176.83.238.22 - - [05/Nov/2024 19:21:27] "\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03¹ÑhÛ¤V\x00p@UJ4\x9døÀÛi{·ø,u©\x9e°R^)¾½2Ë \x19Ö­ÓÀÕ\x18ô\x17[Ö?ëYÃ\x08\x1dõ\x19ôä¤\x1f9 ¯]$²O+õ\x00 ºº\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93êê\x00\x00\x00\x17\x00\x00ÿ\x01\x00\x01\x00\x00" HTTPStatus.BAD_REQUEST -
+176.83.238.22 - - [05/Nov/2024 19:21:28] code 400, message Bad request version ('\x9a\x9a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\xadºº\x00\x00ÿ\x01\x00\x01\x00\x00-\x00\x02\x01\x01\x003\x00+\x00)')
+176.83.238.22 - - [05/Nov/2024 19:21:28] "\x16\x03\x01\x02\x1a\x01\x00\x02\x16\x03\x03pÄ½\x96àü´¦ä,ÆG\x88±½\x8aý²|æ¸¸kù$êQ\x99\x04:\x8cf ·À\x1bJL\x18D*\\ \x16i_Ï\x17æ\x85ÈxH\x87ôï`JlW")bt¸\x00 \x9a\x9a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01­ºº\x00\x00ÿ\x01\x00\x01\x00\x00-\x00\x02\x01\x01\x003\x00+\x00)" HTTPStatus.BAD_REQUEST -
+176.83.238.22 - - [05/Nov/2024 19:21:30] "GET /datos_candidatos?perfil=Contador&experiencia=9 HTTP/1.1" 200 -
+176.83.238.22 - - [05/Nov/2024 19:21:30] "GET /favicon.ico HTTP/1.1" 404 -
+78.108.177.51 - - [05/Nov/2024 19:40:14] "GET / HTTP/1.0" 200 -
+198.235.24.30 - - [05/Nov/2024 20:37:01] code 400, message Bad request version ('À\x13À')
+198.235.24.30 - - [05/Nov/2024 20:37:01] "\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03úóû;\x1b\x04\x1c\x08Ôþö¶JóÞö\x97æe\x15Ð\x17$4Í\x0d&²ÍA\x06N è\x829$Ê\x9cG«8Þ=þÍò(¾F\x94K\x86XÛÙ\x88¿\x10\x9f\x7f¬ü²V\x00&À+À/À,À0Ì©Ì¨À\x09À\x13À" HTTPStatus.BAD_REQUEST -
+198.235.24.30 - - [05/Nov/2024 20:37:01] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03\x84×)ëáÂû\x08\x00¹¿¯\x8eZÅ¼Ëæ_"«4»Ö\x15®\x97Ýk×{ð\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À\'À#À\x13À')
+198.235.24.30 - - [05/Nov/2024 20:37:01] "\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03\x84×)ëáÂû\x08\x00¹¿¯\x8eZÅ¼Ëæ_"«4»Ö\x15®\x97Ýk×{ð\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À\x09À(À$À\x14À" HTTPStatus.BAD_REQUEST -
+90.151.171.106 - - [05/Nov/2024 20:48:19] "CONNECT 90.151.171.106:443 HTTP/1.1" 404 -
+90.151.171.106 - - [05/Nov/2024 20:48:29] code 400, message Bad request syntax ('\x04\x01\x00PZ\x97«j0\x00')
+90.151.171.106 - - [05/Nov/2024 20:48:29] "\x04\x01\x00PZ\x97«j0\x00" HTTPStatus.BAD_REQUEST -
+90.151.171.106 - - [05/Nov/2024 20:48:29] "GET http://90.151.171.106/ip.php?Z70031635463Q1 HTTP/1.1" 404 -
+90.151.171.106 - - [05/Nov/2024 20:48:39] code 400, message Bad request syntax ('\x05\x01\x00')
+90.151.171.106 - - [05/Nov/2024 20:48:39] "\x05\x01\x00" HTTPStatus.BAD_REQUEST -
+31.4.197.58 - - [05/Nov/2024 21:12:12] "GET /favicon.ico HTTP/1.1" 404 -
+114.46.97.61 - - [05/Nov/2024 21:17:10] "GET / HTTP/1.0" 200 -
+87.120.166.244 - - [05/Nov/2024 21:40:29] "CONNECT google.com:443 HTTP/1.1" 404 -
+77.227.251.246 - - [05/Nov/2024 22:31:08] "GET //datos_candidatos?perfil=contador&experiencia=1 HTTP/1.1" 200 -
+77.227.251.246 - - [05/Nov/2024 22:32:17] "GET /datos_candidatos?perfil=contador&experiencia=1 HTTP/1.1" 200 -
+213.0.100.218 - - [05/Nov/2024 22:33:48] "GET /datos_candidatos?perfil=contador&experiencia=1 HTTP/1.1" 200 -
+213.0.100.218 - - [05/Nov/2024 22:36:04] "GET /datos_candidatos?perfil=Contador&experiencia=1 HTTP/1.1" 200 -
+213.0.100.218 - - [05/Nov/2024 22:38:54] "GET /datos_candidatos?perfil=Contador&experiencia=1 HTTP/1.1" 200 -
+77.227.251.246 - - [05/Nov/2024 22:38:54] "GET /favicon.ico HTTP/1.1" 404 -
+77.227.251.246 - - [05/Nov/2024 22:45:24] "GET /datos_candidatos?perfil=Contador&experiencia=1 HTTP/1.1" 200 -
+213.0.100.218 - - [05/Nov/2024 22:47:31] "GET /datos_candidatos?perfil=Contador&experiencia=1 HTTP/1.1" 200 -
+77.227.251.246 - - [05/Nov/2024 22:48:45] "GET /datos_candidatos?perfil=Contador&experiencia=1 HTTP/1.1" 200 -
+35.237.4.214 - - [05/Nov/2024 22:51:51] "GET /datos_candidatos?perfil=Contador&experiencia=1 HTTP/1.1" 200 -
+147.185.132.207 - - [05/Nov/2024 22:54:46] "GET / HTTP/1.0" 200 -
+213.0.100.218 - - [05/Nov/2024 22:55:50] "GET /datos_candidatos?perfil=Contador&experiencia=1 HTTP/1.1" 200 -
+77.227.251.246 - - [05/Nov/2024 22:55:57] "GET /datos_candidatos?perfil=Contador&experiencia=1 HTTP/1.1" 200 -
+77.227.251.246 - - [05/Nov/2024 23:01:55] "GET /datos_candidatos?perfil=Contador&experiencia=1 HTTP/1.1" 200 -
+77.227.251.246 - - [05/Nov/2024 23:02:50] code 400, message Bad request version ('ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063\x9a\x9a\x00\x00\x00')
+77.227.251.246 - - [05/Nov/2024 23:02:50] "\x16\x03\x01\x06 \x01\x00\x06\x9c\x03\x03e;ÙòÙq"=<°¡¦ë°ÎF.QYAò\x19÷$.1$ÕÞnm\x1d Ä¹MÙ¥¦\x0b\x0b×0kÈ4yi\x09N\x01\x86\x9eôÇíçíá>÷°ª)U\x00 ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063\x9a\x9a\x00\x00\x00" HTTPStatus.BAD_REQUEST -
+213.0.100.218 - - [05/Nov/2024 23:02:51] code 400, message Bad request version ('\x87u')
+213.0.100.218 - - [05/Nov/2024 23:02:51] "\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03å,»Í2þJ¿\x9aR\x93zoKIïþ9Ñur²\x98æsè\x7f+\x0d\x7f¯\x84 "W\x8eÛw{[êo¬x\x1c4Ýõj\x89UªÖ\x0bú\x94äÐÏÎºT®n/\x00 ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06s\x1a\x1a\x00\x00\x00+\x00\x07\x06ÊÊ\x03\x04\x03\x03\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\x0b\x00\x02\x01\x00\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x00\x1b\x00\x03\x02\x00\x02\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01Di\x00\x05\x00\x03\x02h2\x003\x04ï\x04í\x9a\x9a\x00\x01\x00c\x99\x04ÀÃ\x96£Íq\x18¬7\x16\x85\x8bD9i¾yÉÄlÇ\x82ÓÞz \x87u" HTTPStatus.BAD_REQUEST -
+213.0.100.218 - - [05/Nov/2024 23:02:51] "GET /datos_candidatos?perfil=Contador&experiencia=1 HTTP/1.1" 200 -
+213.0.100.218 - - [05/Nov/2024 23:03:18] "GET /datos_candidatos?perfil=Contador&experiencia=1 HTTP/1.1" 200 -
+213.0.100.218 - - [05/Nov/2024 23:03:18] code 400, message Bad request version ('áÊ\x9e/\x19%§C\\º¡z_p=n«´ê©P84mél@ò¢_w\x84%\x9d\x93Å\x9aG\x92£Ë«÷(@\x04<Éðà¥<\x02^\x9dA')
+213.0.100.218 - - [05/Nov/2024 23:03:18] "\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x03L\x85fýO¸LY\x0eÇMÁb\x10éi\x19ËyÏv¥ô¦9«¿zK\x87\x0c½ É³D_\x1e\x86U\x94\x99m\x0b\x9b\x81"\x95S..aú©rßQñÒ\x90»®u\x8d¤\x00 ::\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93ÚÚ\x00\x00\x00-\x00\x02\x01\x01\x00+\x00\x07\x06ªª\x03\x04\x03\x03\x00\x1b\x00\x03\x02\x00\x02\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1\x00\x0b\x00\x02\x01\x00\x00#\x00\x00ÿ\x01\x00\x01\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\x12\x00\x00Di\x00\x05\x00\x03\x02h2\x003\x04ï\x04í::\x00\x01\x00c\x99\x04À®\x840æ4­\x95\x9bIµ\x02\x04R+õ\x19¢j¿\x0fwBú\x8d\x8a\x91\x95\x87wqû\x06Æ¨\x05ø\x8b\x11C\x17\x15LTe\x9a%\x8cT¸\x8dÌ\x07)\x7få^å\x08Î´Û\x8f\x1b@Â¨a\x15E&^¯\x92&l¹R±T¯\x08\x12\x98\x1f\x89\x1e7+\x9f6\x8c\x90[;\x8d^`gçf\x0cáÊ\x9e/\x19%§C\\º¡z_p=n«´ê©P84mél@ò¢_w\x84%\x9d\x93Å\x9aG\x92£Ë«÷(@\x04<Éðà¥<\x02^\x9dA" HTTPStatus.BAD_REQUEST -
+77.227.251.246 - - [05/Nov/2024 23:03:18] code 400, message Bad request version ('\x00\x02\x01\x00\x00')
+77.227.251.246 - - [05/Nov/2024 23:03:18] "\x16\x03\x01\x06 \x01\x00\x06\x9c\x03\x03Ê»¤eB2U\x0c\x7fk9ßo\x8ael\x00\x94\x86E®WyS\x00X¶i:ÚÖf !\x8d¥É·ÀÕ\x9céi=7v{\x97\x19±C\x90\\&U\x12\x19\x05üÙI°\x06\x05\x08\x00 ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x063ºº\x00\x00\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00+\x00\x07\x06úú\x03\x04\x03\x03\x00#\x00\x00\x00\x12\x00\x00\x00\x10\x00\x0e\x00\x0c\x02h2\x08http/1.1ÿ\x01\x00\x01\x00\x00\x0b\x00\x02\x01\x00\x00" HTTPStatus.BAD_REQUEST -
+ * Detected change in '/root/tarea2_ISS/servidor/servidor.py', reloading
+ * Restarting with stat
+Traceback (most recent call last):
+  File "/root/tarea2_ISS/servidor/servidor.py", line 6, in <module>
+    from flask_cors import CORS
+ModuleNotFoundError: No module named 'flask_cors'

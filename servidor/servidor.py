@@ -3,9 +3,11 @@ from flask import jsonify
 import psycopg2, psycopg2.extras
 import json
 from Candidato import Candidato
+from flask_cors import CORS
+
 
 app = Flask(__name__)
-
+CORS(app)
 
 
 
@@ -146,5 +148,5 @@ def eliminar_candidato():
 
     
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=8080,host="0.0.0.0")
     
