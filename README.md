@@ -25,8 +25,8 @@ Lista de las distintas tecnologías del sistema:
    ```bash
     pip install psycopg2_binary
 4. Instalar psycopg2
-```bash
- sudo apt install curl 
+   ```bash
+    sudo apt install curl 
 
 ## Comandos del servicio
 A continuación se comentarán los pasos que hay que realizar para arrancar el servicio 
